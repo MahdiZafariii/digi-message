@@ -3,11 +3,13 @@ import OutlineBtn from "@/common/OutlineBtn";
 import { PrimaryBtn } from "@/common/PrimaryBtn";
 import Head from "next/head";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { HiOutlinePlay } from "react-icons/hi2";
 
 export default function Home() {
   const [level, setLevel] = useState(0);
+  const router = useRouter();
   return (
     <>
       <Head>
@@ -55,10 +57,13 @@ export default function Home() {
         ) : (
           <div className="w-full flex flex-col items-center gap-4">
             <div className="w-full h-12 ">
-              <PrimaryBtn text="ثبت نام" />
+              <PrimaryBtn
+                text="ثبت نام"
+                onClick={() => router.push("/signup")}
+              />
             </div>
             <div className="w-full h-12 ">
-              <OutlineBtn text="ورود" />
+              <OutlineBtn text="ورود" onClick={() => router.push("/login")} />
             </div>
           </div>
         )}
